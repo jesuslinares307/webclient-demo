@@ -7,14 +7,14 @@ import reactor.core.publisher.Mono;
 
 @Service
 public class UserService {
-    private final WebClient.Builder webClientBuilder;
+    private final WebClient webClientBuilder;
 
-    public UserService(WebClient.Builder webClientBuilder) {
+    public UserService(WebClient webClientBuilder) {
         this.webClientBuilder = webClientBuilder;
     }
 
     public User getUserById(Long id) {
-        return webClientBuilder.build()
+        return webClientBuilder
                 .get()
                 .uri("https://jsonplaceholder.typicode.com/users/{id}", id)
                 .retrieve()
